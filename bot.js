@@ -111,12 +111,11 @@ client.on('error', e => {
 client.login(ayarlar.token);
 
 //----------------------------------------------------------------------------\\
-client.on(guildMemberAdd, async member => {
+client.on(`guildMemberAdd`, async member => {
   const e = new Discord.RichEmbed()
-    .setColor(RANDOM)
-    .setImage("https://media.giphy.com/media/fu2DK2kjCKwZQMF5Da/giphy.gif")
-    .addField(Sunucumuza geldiğin için teşekkür ederim!, BOT iyi eğlenceler diler)
-    .addField(Davet Linkleri;, [Botu Sunucuna Eklemek için Tıkla](BOT DAVET LİNKİNİZ)\n[Botun Destek Sunucusu](SUNUCU LİNKİNİZ))
-    .setFooter(Bu Sunucu 7/24 BOT tarafından korunuyor.)
+    .setColor(`RANDOM`)
+    .setImage(`https://media.giphy.com/media/fu2DK2kjCKwZQMF5Da/giphy.gif`)
+    .addField(`Sunucumuza geldiğin için teşekkür ederim!`, `Fyukas iyi eğlenceler diler`)
+    .setFooter(`Fyukas`)
   member.send(e);
 });
