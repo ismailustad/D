@@ -119,8 +119,11 @@ client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
-  .setColor('RANDOM')
-        .addField('Mesajı Gönderen',` ${message.author.tag} `)
+  .setColor('#e7a3ff')
+        .addField(`Kullanıcı İsmi`,`${member.user.username}`)
+        .addField(`Kullanıcı ID`,`${member.user.id}`)
+        .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
+        .setAuthor(`Sunucumuza hoşgeldiniz`,`${member.user.avatarURL}`)
         .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
   .setTimestamp()
   channel.sendEmbed(embed); 
