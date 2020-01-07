@@ -119,3 +119,41 @@ client.on(`guildMemberAdd`, async member => {
     .setFooter(`Fyukas`)
   member.send(e);
 });
+
+//-----------------------------------------------------------------------------\\
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+
+  const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle(':inbox_tray: | Sunucuya katıldı!')
+  .setTimestamp()
+  channel.sendEmbed(embed); 
+});
+
+client.on('guildMemberRemove', member => {
+  const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle(':outbox_tray: | Sunucudan ayrıldı')
+  .setTimestamp()
+  channel.sendEmbed(embed); 
+});
+//ayarlanmayan giriş çıkış bot.js
+client.on('message', async message => {
+if (message.content === '/fake katıl') {
+  client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
+    }
+});
+client.on('message', async message => {
+    if (message.content === '/fake ayrıl') {
+        client.emit('guildMemberRemove', message.member || await message.guild.fetchMember(message.author));
+    }
+});
