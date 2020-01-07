@@ -111,14 +111,6 @@ client.on('error', e => {
 client.login(ayarlar.token);
 
 //----------------------------------------------------------------------------\\
-client.on(`guildMemberAdd`, async member => {
-  const e = new Discord.RichEmbed()
-    .setColor(`RANDOM`)
-    .setImage(`https://media.giphy.com/media/fu2DK2kjCKwZQMF5Da/giphy.gif`)
-    .addField(`Sunucumuza geldiğin için teşekkür ederim!`, `Fyukas iyi eğlenceler diler`)
-    .setFooter(`Fyukas`)
-  member.send(e);
-});
 
 //-----------------------------------------------------------------------------\\
 client.on('guildMemberAdd', member => {
@@ -130,7 +122,9 @@ client.on('guildMemberAdd', member => {
   .setColor('RANDOM')
   .setAuthor(member.user.username, member.user.avatarURL)
   .setThumbnail(member.user.avatarURL)
+.setThumbnail('https://i.hizliresim.com/Z5bgoA.png')
   .setTitle(':inbox_tray: | Sunucuya katıldı!')
+  .setTitle('https://i.hizliresim.com/Z5bgoA.png')
   .setTimestamp()
   channel.sendEmbed(embed); 
 });
