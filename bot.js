@@ -123,7 +123,7 @@ client.on('guildMemberAdd', member => {
         .addField(`Kullanıcı İsmi`,`${member.user.username}`)
         .addField(`Kullanıcı ID`,`${member.user.id}`)
         .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
-        .setAuthor(`Sunucumuza hoşgeldiniz`,`${member.user.avatarURL}`)
+        .setThumbnail(member.user.avatarURL)
         .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
   .setTimestamp()
   channel.sendEmbed(embed); 
