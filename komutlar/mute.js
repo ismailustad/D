@@ -7,10 +7,12 @@ const prefix = ayarlar.prefix;
 var mutelirolu = "FyMute" //MUTELENDİGİ ZAMAN VERİLECEK ROLU  BURAYA YAZINIZ...
 
 module.exports.run = async (bot, message, args) => {
+if (message.member.roles.some(Rol => Rol.id === '664242074396131328')) { return message.channel.send("Malesef rolün yetersiz kalıyor dostum.")
+
+}
 
   let mutekisi = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!mutekisi) return message.reply(`:warning: Lütfen bir kullanıcı etiketleyiniz! \nDoğru Kullanım; \`${prefix}mute <@kullanıcı> <1sn/1dk/1sa/1g>\``)
-  if(mutekisi.hasPermission("MANAGE_MESSAGES")) return message.reply(`:warning: Yetkili bir kişiyi muteleyemem! \nDoğru Kullanım; \`${prefix}mute <@kullanıcı> <1sn/1dk/1sa/1g>\``)
   let muterol = message.guild.roles.find(`name`, mutelirolu);
   if(!muterol){
     try{
