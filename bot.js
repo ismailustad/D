@@ -120,6 +120,7 @@ client.on('guildMemberAdd', member => {
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
         .addField(`Kullanıcı İsmi`,`${member.user.username}`)
+        .addField(`Kullanıcı Tagı`,`#${member.user.discriminator}`)
         .addField(`Kullanıcı ID`,`${member.user.id}`)
         .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
         .addField(`Kullanıcı Bot mu?`, `${member.user.bot ? '\n Evet' : 'Hayır'}`)
