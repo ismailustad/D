@@ -115,15 +115,14 @@ client.login(ayarlar.token);
 //-----------------------------------------------------------------------------\\
 client.on('guildMemberAdd', member => {
   let guild = member.guild;
-
   const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
         .addField(`Kullanıcı İsmi`,`${member.user.username}`)
         .addField(`Kullanıcı ID`,`${member.user.id}`)
-        .addField(`Katılma Tarihi`,`${member.user.id}`)
         .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
+        .addField(`BOT mu?`, ${message.author.bot ? `\n Evet` : `Hayır`)
         .setThumbnail(member.user.avatarURL)
         .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
   .setTimestamp()
