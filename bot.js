@@ -119,14 +119,16 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
-        .addField(`Kullanıcı İsmi`,`${member.user.username}`)        
+        .addField(`Kullanıcı İsmi`,`${member.user.username}`)   
+        .addField(`Kullanıcı Etiket`,`${member}`)
         .addField(`Kullanıcı Tagı`,`#${member.user.discriminator}`)
         .addField(`Kullanıcı Etiket`,`${member}`)
         .addField(`Kullanıcı ID`,`${member.user.id}`)
+        .addField(`Kullanıcı Kayıt tarihi`,`${member.user.createdAt}`)
         .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
         .addField(`Kullanıcı Bot mu?`, `${member.user.bot ? '\n Evet' : 'Hayır'}`)
         .addField(`Şu an oynadığı oyun`, `${member.user.presence.game ? member.user.presence.game.name : `Şu an oyun oynamıyor`}`)
-        .addField(`Kayıt tarihi`,`${member.author.createdAt}`)
+    .setFooter(`Fyukas`)
         .setThumbnail(member.user.avatarURL)
         .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
   .setTimestamp()
@@ -144,7 +146,8 @@ client.on('guildMemberRemove', member => {
   .setTimestamp()
   channel.sendEmbed(embed); 
 });
-//ayarlanmayan giriş çıkış bot.js
+
+//----------------------FAKE KATIL AYRIL----------------------\\
 client.on('message', async message => {
 if (message.content === '/fake katıl') {
   client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
@@ -155,3 +158,15 @@ client.on('message', async message => {
         client.emit('guildMemberRemove', message.member || await message.guild.fetchMember(message.author));
     }
 });
+//----------------------FAKE KATIL AYRIL SON----------------------\\
+
+//----------------------Özelden hoşgeldin mesajı----------------------\\
+client.on(`guildMemberAdd`, async member => {
+  const e = new Discord.RichEmbed()
+    .setColor(`RANDOM`)
+    .setImage(`https://media.giphy.com/media/fu2DK2kjCKwZQMF5Da/giphy.gif`)
+    .addField(`Sunucumuza geldiğin için teşekkür ederim!`, `Fyukas iyi eğlenceler diler`)
+    .setFooter(`Fyukas`)
+  member.send(e);
+});
+//----------------------Özelden hoşgeldin mesajı SON----------------------\\
