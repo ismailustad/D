@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
   let mutekisi = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!mutekisi) return message.reply(`:warning: Lütfen bir kullanıcı etiketleyiniz! \nDoğru Kullanım; \`${prefix}mute <@kullanıcı> <1sn/1dk/1sa/1g>\``)
-  if (!message.member.roles.has("664242074396131328") return message.channel.send('Bu komutu kullanmak için **Mute Atma Yetkin** olması gerekiyor.!') 
+  if (!message.member.roles.has("664242074396131328")) return message.channel.send('Bu komutu kullanmak için **Mute Atma Yetkin** olması gerekiyor.!') 
 
   let muterol = message.guild.roles.find(`name`, mutelirolu);
   if(!muterol){
