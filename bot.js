@@ -120,11 +120,8 @@ client.on('guildMemberAdd', member => {
   if (!channel) return;
   const embed = new Discord.RichEmbed()
   .setColor('RANDOM')
-  .setAuthor(member.user.username, member.user.avatarURL)
-  .setThumbnail(member.user.avatarURL)
-.setThumbnail('https://i.hizliresim.com/Z5bgoA.png')
-  .setTitle(':inbox_tray: | Sunucuya katıldı!')
-  .setTitle('https://i.hizliresim.com/Z5bgoA.png')
+        .addField('Mesajı Gönderen',` ${message.author.tag} `)
+        .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
   .setTimestamp()
   channel.sendEmbed(embed); 
 });
