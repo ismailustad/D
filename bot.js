@@ -122,6 +122,7 @@ client.on('guildMemberAdd', member => {
   .setColor('#e7a3ff')
         .addField(`Kullanıcı İsmi`,`${member.user.username}`)
         .addField(`Kullanıcı ID`,`${member.user.id}`)
+        .addField(`Katılma Tarihi`,`${member.user.id}`)
         .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
         .setThumbnail(member.user.avatarURL)
         .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
