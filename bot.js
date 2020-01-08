@@ -180,7 +180,6 @@ client.on(`guildMemberAdd`, async member => {
 //-----------------------------Süreli Yazı-----------------------------//
 setInterval(() => {
   client.channels.get("658340821917106190").send(
-Discord.RichEmbed()
-.setDescription(`deneme`)).then(msg => msg.delete(10000));
+Discord.RichEmbed().setDescription(`deneme`)).then(msg => msg.delete(10000));
 }, 500)
 //-----------------------------Süreli Yazı Son-----------------------------//
