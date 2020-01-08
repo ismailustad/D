@@ -284,5 +284,5 @@ client.on('guildMemberAdd',async member => {
 
    
        const attachment = new Discord.Attachment(canvas.toBuffer(), 'STARKs-güvenlik.png');
-    chan.send(attachment)
+    channel.send(attachment)
 });
