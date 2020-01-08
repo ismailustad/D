@@ -181,7 +181,7 @@ client.on(`guildMemberAdd`, async member => {
 // inside a command, event listener, etc.
   const embed = new Discord.RichEmbed()
   .setColor('#e7a3ff')
-  setInterval(() => {
+  .addField(() => {
   client.channels.get("658340821917106190").send('deneme').then(msg => msg.delete(10000));
-}, 60000)
+}, 500)
 //-----------------------------Süreli Yazı Son-----------------------------//
