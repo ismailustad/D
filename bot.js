@@ -181,8 +181,8 @@ client.on(`guildMemberAdd`, async member => {
 setInterval(() => {                       
   var embed = new Discord.RichEmbed()
                         .setColor(`#303136`)
-                        .setDescription(`Level sistemimiz aktif!`)
-                        .setImage(`https://media.giphy.com/media/YRJFBV6ewaZmkMoaws/giphy.gif`)
+                        .setDescription(`Sende Discord Sunucumuzda Yazışarak Levelini Yükseltebilirsin.`)
+                        .setImage(`https://media.giphy.com/media/fV28PNftkihVR7y1Bk/giphy.gif`)
      client.channels.get("658340821917106190").send(embed).then(msg => msg.delete(10000));
 }, 30000)
 //-----------------------------Süreli Yazı Son-----------------------------//
