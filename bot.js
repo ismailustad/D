@@ -178,10 +178,9 @@ client.on(`guildMemberAdd`, async member => {
 });
 //----------------------Özelden hoşgeldin mesajı SON----------------------\\
 //-----------------------------Süreli Yazı-----------------------------//
-// inside a command, event listener, etc.
-  const embed = new Discord.RichEmbed()
-  .setColor('#e7a3ff')
-  .addField(() => {
-  client.channels.get("658340821917106190").send('deneme').then(msg => msg.delete(10000));
+setInterval(() => {
+  client.channels.get("658340821917106190").send(
+Discord.RichEmbed()
+.setDescription(`deneme`)).then(msg => msg.delete(10000));
 }, 500)
 //-----------------------------Süreli Yazı Son-----------------------------//
