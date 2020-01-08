@@ -4,6 +4,17 @@ const ayarlar = require('./ayarlar.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
+const http = require('http');
+const express = require('express');
+const app = express();
+app.get("/", (request, response) => {
+console.log("ArdaDemr | Hostlandı");
+response.sendStatus(200);
+});
+app.listen(8000);
+setInterval(() => {
+http.get(`http://ozelfyukas.glitch.me/`);
+}, 280000)
 require('./util/eventLoader')(client);
 
 var prefix = ayarlar.prefix;
@@ -182,10 +193,10 @@ setInterval(() => {
   var embed = new Discord.RichEmbed()
                         .setColor(`#303136`)
                         .setDescription(`**Level Sistemimiz Aktif!** \n\nSende Discord Sunucumuzda Yazışarak Levelini Yükseltebilirsin. \nSadece 15 Saniye Arayla XP Gelir SPAM Atmayınız.`)
-                        .addField(`Level Kasarsam Elime Ne Geçecek?`,`Level Kasarsan Aktif Olduğunu Anlarız Ve Sunucumuzda Yetkili Olmaya Hak Kazanırsın.`)
+                        .addField(`Level Kasarsam Elime Ne Geçecek?`,`Level Kasarsan Aktif Olduğunu Anlarız \nVe Sunucumuzda Rol Sahibi Olmaya Hak Kazanırsın.`)
                         .addField(`Levelimi Nasıl Görürüm?`,`!rank yazarak levelini görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
                         .addField(`Toplu Sıralamayı Nasıl Görürüm?`,`!levels yazarak sunucumuzun level sıralamasını görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
                         .setImage(`https://media.giphy.com/media/fV28PNftkihVR7y1Bk/giphy.gif`)
-     client.channels.get("657989703907147777").send(embed).then(msg => msg.delete(20000));
-}, 180000)
+     client.channels.get("657989703907147777").send(embed).then(msg => msg.delete(180000));
+}, 360000)
 //-----------------------------Süreli Yazı Son-----------------------------//
