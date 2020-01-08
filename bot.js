@@ -254,6 +254,7 @@ if(deletedMessage.author.bot || deletedMessage.channel.type === "dm") return;
 //-------------------GÜVENLİK
 client.on('guildMemberAdd',async member => {
   let user = client.users.get(member.id);
+  let chan = client.channels.get(db.fetch(`guvenlik${member.guild.id}`)) 
        const Canvas = require('canvas')
        const canvas = Canvas.createCanvas(360,100);
        const ctx = canvas.getContext('2d');
@@ -283,6 +284,5 @@ client.on('guildMemberAdd',async member => {
 
    
        const attachment = new Discord.Attachment(canvas.toBuffer(), 'STARKs-güvenlik.png');
-       let kanal = member.guild.channels.find(x => x.id = db.fetch(`guvenlik${member.guild.id}`))
-       kanal.send(attachment)
+    chan.send(attachment)
 });
