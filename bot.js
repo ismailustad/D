@@ -181,8 +181,11 @@ client.on(`guildMemberAdd`, async member => {
 setInterval(() => {                       
   var embed = new Discord.RichEmbed()
                         .setColor(`#303136`)
-                        .setDescription(`Sende Discord Sunucumuzda Yazışarak Levelini Yükseltebilirsin.`)
+                        .setDescription(`**Level Sistemimiz Aktif!** \n\nSende Discord Sunucumuzda Yazışarak Levelini Yükseltebilirsin. \nSadece 15 Saniye Arayla XP Gelir SPAM Atmayınız.`)
+                        .addField(`Level Kasarsam Elime Ne Geçecek?`,`Level Kasarsan Aktif Olduğunu Anlarız Ve Sunucumuzda Yetkili Olmaya Hak Kazanırsın.`)
+                        .addField(`Levelimi Nasıl Görürüm?`,`!rank yazarak levelini görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
+                        .addField(`Toplu Sıralamayı Nasıl Görürüm?`,`!levels yazarak sunucumuzun level sıralamasını görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
                         .setImage(`https://media.giphy.com/media/fV28PNftkihVR7y1Bk/giphy.gif`)
-     client.channels.get("658340821917106190").send(embed).then(msg => msg.delete(10000));
-}, 30000)
+     client.channels.get("657989703907147777").send(embed).then(msg => msg.delete(20000));
+}, 180000)
 //-----------------------------Süreli Yazı Son-----------------------------//
