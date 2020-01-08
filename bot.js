@@ -200,3 +200,52 @@ setInterval(() => {
      client.channels.get("657989703907147777").send(embed).then(msg => msg.delete(180000));
 }, 360000)
 //-----------------------------Süreli Yazı Son-----------------------------//
+client.on("message", async (message) => {
+if(message.author.bot || message.channel.type === "dm") return;
+  let sChannelanan = message.guild.channels.find(c => c.name === "log")
+  let embed = new Discord.RichEmbed()
+  .setColor("GREEN")
+  .setAuthor(`Mesaj Gönderildi`, message.author.avatarURL)
+  .addField("Kullanıcı", message.author)
+  .addField("Mesaj", message.content, true)
+  .addField("Kanal Adı", message.channel.name, true)
+  .addField("Mesaj ID", message.id, true)
+  .addField("Kullanıcı ID", message.author.id, true)
+  .setThumbnail(message.author.avatarURL)
+  .setFooter(`Bilgilendirme  • bügün saat ${message.createdAt.getHours()+3}:${message.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
+  sChannelanan.send(embed)
+});
+
+client.on("messageUpdate", async (oldMessage, newMessage) => {
+if(newMessage.author.bot || newMessage.channel.type === "dm") return;
+  let sChannelanan = newMessage.guild.channels.find(c => c.name === "log")
+  if (oldMessage.content == newMessage.content) return;
+  let embed = new Discord.RichEmbed()
+  .setColor("GREEN")
+  .setAuthor(`Mesaj Düzenlendi`, newMessage.author.avatarURL)
+  .addField("Kullanıcı", newMessage.author)
+  .addField("Eski Mesaj", oldMessage.content, true)
+  .addField("Yeni Mesaj", newMessage.content, true)
+  .addField("Kanal Adı", newMessage.channel.name, true)
+  .addField("Mesaj ID", newMessage.id, true)
+  .addField("Kullanıcı ID", newMessage.author.id, true)
+  .setThumbnail(newMessage.author.avatarURL)
+  .setFooter(`Bilgilendirme  • bügün saat ${newMessage.createdAt.getHours()+3}:${newMessage.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
+  sChannelanan.send(embed)
+});
+client.on("messageDelete", async (deletedMessage) => {
+if(deletedMessage.author.bot || deletedMessage.channel.type === "dm") return;
+  let sChannelanan = deletedMessage.guild.channels.find(c => c.name === "log")
+  let embed = new Discord.RichEmbed()
+  .setColor("GREEN")
+  .setAuthor(`Mesaj Silindi`, deletedMessage.author.avatarURL)
+  .addField("Kullanıcı", deletedMessage.author)
+  .addField("Silinen Mesaj", deletedMessage.content, true)
+  .addField("Kanal Adı", deletedMessage.channel.name, true)
+  .addField("Mesaj ID", deletedMessage.id, true)
+  .addField("Kullanıcı ID", deletedMessage.author.id, true)
+  .setThumbnail(deletedMessage.author.avatarURL)
+  .setFooter(`Bilgilendirme  • bügün saat ${deletedMessage.createdAt.getHours()+3}:${deletedMessage.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
+  sChannelanan.send(embed)
+});
+   
