@@ -178,8 +178,11 @@ client.on(`guildMemberAdd`, async member => {
 });
 //----------------------Özelden hoşgeldin mesajı SON----------------------\\
 //-----------------------------Süreli Yazı-----------------------------//
-setInterval(() => {
-  client.channels.get("658340821917106190").send(
-Discord.RichEmbed().setDescription(`deneme`)).then(msg => msg.delete(10000));
-}, 500)
+setInterval(() => {                       
+  var embed = new Discord.RichEmbed()
+                        .setColor(`#303136`)
+                        .setDescription(`test`)
+                        .setImage(`https://i.hizliresim.com/odDzGQ.png`)
+     client.channels.get("658340821917106190").send(embed).then(msg => msg.delete(10000));
+}, 33000)
 //-----------------------------Süreli Yazı Son-----------------------------//
