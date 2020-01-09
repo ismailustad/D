@@ -1,26 +1,26 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 
 exports.run = async(client, message, args) => {
-      if (!message.guild) {
-    const uyarilar = new Discord.RichEmbed()
-    .setColor(0x2488E7)
-    .setTimestamp()
+  
+  if (!message.member.hasPermission("MANAGE_ROLES")){
+    const embed = new Discord.RichEmbed()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .addField('Sadece herhangi bir sunucudan mesaj gönderebilirim.:relaxed: ')
-  }
-};
-  
-  
+    .setColor('RED')
+    .addField('👥 Role Sahip Kullanıcılar', role.members.size, true)
+    message.channel.send(embed)
+      }
     
+ };
+
 exports.conf = {
-    enabled: true,
-    guildOnly: true,
-    aliases: ['oto-rol'],
-    permLevel: 0
+  enabled: true,
+  guildOnly: false,
+  aliases: ["uyarılar"],
+  permLevel: 0,
 }
 
 exports.help = {
-    name: 'otorol',
-    description: 'Sunucuya giren kullanıcıya seçtiğiniz rolü otomatik verir.',
-    usage: 'otorol <@rol>'
-}
+  name: 'uyarılar',
+  description: 'Etiketlediğiniz rol hakkında bilgi alırsınız.',
+  usage: 'rol-bilgi [rol]'
+};
