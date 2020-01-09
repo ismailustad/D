@@ -1,26 +1,31 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
+const superagent = require("superagent");
 
-exports.run = async(client, message, args) => {
-  
-  if (!message.member.hasPermission("MANAGE_ROLES")){
-    const embed = new Discord.RichEmbed()
-    .setAuthor(message.author.username, message.author.avatarURL)
-    .setColor('RED')
-    .addField('👥 Role Sahip Kullanıcılar', role.members.size, true)
-    message.channel.send(embed)
-      }
-    
- };
-
+exports.run = async (client,message,args) => {
+  var rol = message.content.split(" ").slice(1).join(" ");
+  let role = message.guild.roles.find("name", `${rol}`)
+  var hata = new Discord.RichEmbed()
+  .setColor("#36393F")
+  .setDescription("❌ Yanlış Kullanım `Örnek: /uyarılar Uyarı` **yazmalısın.** ");
+  if(!role) return message.channel.send(hata);
+  var moment = require("moment");
+  var temps = moment(message.createdTimestamp).format("LLLL");
+  var roleinfoEmbed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .addField('👥 Role Sahip Kişi Sayısı', role.members.size, true)
+  .addField('👥 Role Sahip Kişiler', role.member, true)
+  .setFooter("");
+  message.channel.send(roleinfoEmbed)
+}
 exports.conf = {
   enabled: true,
-  guildOnly: false,
-  aliases: ["uyarılar"],
-  permLevel: 0,
-}
+  guildOnly: true,
+  aliases: ['rolinfo', 'rolhakkında', 'rolbilgi'],
+  permLevel: 0
+};
 
 exports.help = {
   name: 'uyarılar',
-  description: 'Etiketlediğiniz rol hakkında bilgi alırsınız.',
-  usage: 'rol-bilgi [rol]'
+  description: 'rolinfo | Rol hakkında bilgi verir.',
+  usage: 'rolinfo <rolismi>'
 };
