@@ -251,3 +251,17 @@ if(deletedMessage.author.bot || deletedMessage.channel.type === "dm") return;
   sChannelanan.send(embed)
 });
    
+
+client.on("guildMemberAdd", async member => {
+  const kanal = member.guild.channels.find("name", "KANAL ADI");
+  kanal.sendMessage(
+    member +
+      `\n**Sunucumuza Hoşgeldin !** \n**Seninle Birlikte \`${member.guild.members.size}\` Kişi Olduk**`
+  );
+});
+
+client.on('guildMemberAdd', member => {
+  let guild = member.guild;
+  const channel = member.guild.channels.find('name', '🔎│register');
+  channel.send('Selam , <@&658028173778354187> Kayıtını En Kısa Sürede Yapacak.');
+});
