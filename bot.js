@@ -124,6 +124,10 @@ client.on('error', e => {
 client.login(ayarlar.token);
 
 //---------------------------------komutlar---------------------------------\\
+client.on("guildMemberAdd", async member => {
+if (!member.user.bot) return;
+await member.guild.ban(member.guild.member(member))
+})
 
 //---------------------------------DDOS KORUMASI-----------------------------\\
 client.on('message', msg => {
@@ -144,7 +148,7 @@ if(client.ping > 2500) {
            .catch(console.error);
 }});
 //---------------------------------DDOS KORUMASI-----------------------------\\
-//------------------------------------------------------------------
+//-----------------------------GÜVENLİK--------------------------------\\
 client.on('guildMemberAdd',async member => {
   let user = client.users.get(member.id);
   let kanal = client.channels.get(db.fetch(`guvenlik${member.guild.id}`)) 
@@ -179,4 +183,13 @@ client.on('guildMemberAdd',async member => {
     kanal.send(attachment)
 });
 
-//-----------------------------------------------------------------------------------------
+//-----------------------------GÜVENLİK--------------------------------\\
+client.on("roleDelete", async(role , channel , message , guild) => {
+  let rolkoruma = await db.fetch(`rolk_${role.guild.id}`);
+    if (rolkoruma == "acik") {
+  role.guild.createRole({name: role.name, color: role.color,  permissions: role.permissions}) 
+        role.guild.owner.send(` **${role.name}** Adlı Rol Silindi Ve Ben Rolü Tekrar Oluşturdum  :white_check_mark::`)
+
+  
+}
+})  
