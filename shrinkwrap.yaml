@@ -16,6 +16,7 @@ dependencies:
   dateformat: 3.0.3
   db: 2.0.0
   dblapi.js: 2.3.0
+  discord-anti-spam: 2.3.5
   discord-anti-spam-tr: 0.7.4
   discord-bots-api: 0.0.2
   discord-eco: 0.0.10
@@ -1408,6 +1409,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-LSk5KjdP0FVWH1Usx5tABMEYTsWivWeR/WxUklEKaPYNXKgbytMbwEd2T6ZB5fJEGwzMZedz4SccIGWUJNWJnw==
+  /discord-anti-spam/2.3.5:
+    dependencies:
+      discord.js: 11.5.1
+    dev: false
+    resolution:
+      integrity: sha512-INL5eI3wiHbI7jgyIdzC0KhNLl/fcPHSRYNsxzdGDVPgAeLd7pxrFK73xvdJHCkvhA4gi6ZQfTS9kVH6RIU8tQ==
   /discord-bots-api/0.0.2:
     dependencies:
       request: 2.88.0
@@ -4831,6 +4838,7 @@ specifiers:
   dateformat: ^3.0.3
   db: ^2.0.0
   dblapi.js: ^2.3.0
+  discord-anti-spam: ^2.3.5
   discord-anti-spam-tr: ^0.7.4
   discord-bots-api: ^0.0.2
   discord-eco: ^0.0.10
