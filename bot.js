@@ -193,3 +193,38 @@ client.on("roleDelete", async(role , channel , message , guild) => {
   
 }
 })  
+
+//--------------------SPAM & BAN--------------------------------\\
+const DiscordAntiSpam = require("discord-anti-spam");
+const AntiSpam = new DiscordAntiSpam({
+
+  warnThreshold: 3,
+  banThreshold: 5,
+  maxInterval: 2000,
+  warnMessage: "{@user}, Lütfen ``spam` yapmayı kesermisin.", //
+  banMessage: "**{user_tag}** `Spam` atmayı kesmediği için banlandı.", 
+  maxDuplicatesBan: 10,
+  deleteMessagesAfterBanForPastDays: 1,
+  ignoredUsers: [],
+  ignoredGuilds: [],
+  exemptPermissions: ["MANAGE_MESSAGES", "ADMINISTRATOR", "MANAGE_GUILD", "BAN_MEMBERS"],
+  ignoreBots: true,
+  verbose: false,
+  client: client,
+  ignoredUsers: [],
+  ignoredGuilds: []
+});
+
+
+ 
+AntiSpam.on("warnEmit", (member) => console.log(`Attempt to warn ${member.user.tag}.`));
+AntiSpam.on("warnAdd", (member) => console.log(`${member.user.tag} has been warned.`));
+AntiSpam.on("banEmit", (member) => console.log(`Attempt to ban ${member.user.tag}.`));
+AntiSpam.on("banAdd", (member) => console.log(`${member.user.tag} has been banned.`));
+AntiSpam.on("dataReset", () => console.log("Module cache has been cleared."));
+ 
+client.on("ready", () => console.log(`Aktif Hizmet Vermektedir.${client.user.tag}.`));
+ 
+client.on("message", (msg) => {
+  AntiSpam.message(msg);
+});
