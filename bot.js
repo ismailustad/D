@@ -123,145 +123,24 @@ client.on('error', e => {
 
 client.login(ayarlar.token);
 
-//----------------------------------------------------------------------------\\
+//---------------------------------komutlar---------------------------------\\
 
-//-----------------------------------------------------------------------------\\
-client.on('guildMemberAdd', member => {
-  let guild = member.guild;
-  const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
-  if (!channel) return;
-  const embed = new Discord.RichEmbed()
-  .setColor('#e7a3ff')
-        .addField(`Kullanıcı İsmi`,`${member.user.username}`)   
-        .addField(`Kullanıcı Tagı`,`#${member.user.discriminator}`)
-        .addField(`Kullanıcı Etiket`,`${member}`)
-        .addField(`Kullanıcı ID`,`${member.user.id}`)
-        .addField(`Kullanıcı Kayıt tarihi`,`${member.user.createdAt}`)
-        .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
-        .addField(`Kullanıcı Bot mu?`, `${member.user.bot ? '\n Evet' : 'Hayır'}`)
-        .addField(`Şu an oynadığı oyun`, `${member.user.presence.game ? member.user.presence.game.name : `Şu an oyun oynamıyor`}`)
-        .setFooter(`Fyukas Sunucusuna Katılma Saati --->`)
-        .setThumbnail(member.user.avatarURL)
-        .setImage(`https://i.hizliresim.com/Z5bgoA.png`)
-  .setTimestamp()
-  channel.sendEmbed(embed); 
-});
+//---------------------------------DDOS KORUMASI-----------------------------\\
+client.on('message', msg => {
 
-client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', '✅│giriş-çıkış');
-  if (!channel) return;
-  const embed = new Discord.RichEmbed()
-  .setColor('#e7a3ff')
-        .addField(`Kullanıcı İsmi`,`${member.user.username}`)   
-        .addField(`Kullanıcı Tagı`,`#${member.user.discriminator}`)
-        .addField(`Kullanıcı Etiket`,`${member}`)
-        .addField(`Kullanıcı ID`,`${member.user.id}`)
-        .addField(`Kullanıcı Kayıt tarihi`,`${member.user.createdAt}`)
-        .addField(`${member.user.username} , ile beraber toplam`,`${member.guild.memberCount} kişi olduk.`)
-        .addField(`Kullanıcı Bot mu?`, `${member.user.bot ? '\n Evet' : 'Hayır'}`)
-        .addField(`Şu an oynadığı oyun`, `${member.user.presence.game ? member.user.presence.game.name : `Şu an oyun oynamıyor`}`)
-        .setFooter(`Fyukas Sunucusundan Ayrılma Saati --->`)
-        .setThumbnail(member.user.avatarURL)
-        .setImage(`https://i.hizliresim.com/4pBRQQ.png`)
-  .setTimestamp()
-  channel.sendEmbed(embed); 
-});
+if(client.ping > 2500) {
 
-//----------------------FAKE KATIL AYRIL----------------------\\
-client.on('message', async message => {
-if (message.content === '/fake katıl') {
-  client.emit('guildMemberAdd', message.member || await message.guild.fetchMember(message.author));
-    }
-});
-client.on('message', async message => {
-    if (message.content === '/fake ayrıl') {
-        client.emit('guildMemberRemove', message.member || await message.guild.fetchMember(message.author));
-    }
-});
-//----------------------FAKE KATIL AYRIL SON----------------------\\
+            let bölgeler = ['singapore', 'eu-central', 'india', 'us-central', 'london',
+            'eu-west', 'amsterdam', 'brazil', 'us-west', 'hongkong', 
+            'us-south', 'southafrica', 'us-east', 'sydney', 'frankfurt',
+            'russia']
+           let yenibölge = bölgeler[Math.floor(Math.random() * bölgeler.length)]
+           let sChannel = msg.guild.channels.find(c => c.name === "ddos-system")
 
-//----------------------Özelden hoşgeldin mesajı----------------------\\
-client.on(`guildMemberAdd`, async member => {
-  const e = new Discord.RichEmbed()
-    .setColor(`RANDOM`)
-    .setImage(`https://media.giphy.com/media/fu2DK2kjCKwZQMF5Da/giphy.gif`)
-    .addField(`Sunucumuza geldiğin için teşekkür ederim!`, `Fyukas iyi eğlenceler diler`)
-    .setFooter(`Fyukas`)
-  member.send(e);
-});
-//----------------------Özelden hoşgeldin mesajı SON----------------------\\
-//-----------------------------Süreli Yazı-----------------------------//
-setInterval(() => {                       
-  var embed = new Discord.RichEmbed()
-                        .setColor(`#303136`)
-                        .setDescription(`**Level Sistemimiz Aktif!** \n\nSende Discord Sunucumuzda Yazışarak Levelini Yükseltebilirsin. \nSadece 15 Saniye Arayla XP Gelir SPAM Atmayınız.`)
-                        .addField(`Level Kasarsam Elime Ne Geçecek?`,`Level Kasarsan Aktif Olduğunu Anlarız \nVe Sunucumuzda Rol Sahibi Olmaya Hak Kazanırsın.`)
-                        .addField(`Levelimi Nasıl Görürüm?`,`!rank yazarak levelini görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
-                        .addField(`Toplu Sıralamayı Nasıl Görürüm?`,`!levels yazarak sunucumuzun level sıralamasını görebilirsin.! \nBu komut sadece <#657990555846049808> Bölümünde Çalışır`)
-                        .setImage(`https://media.giphy.com/media/fV28PNftkihVR7y1Bk/giphy.gif`)
-     client.channels.get("657989703907147777").send(embed).then(msg => msg.delete(180000));
-}, 360000)
-//-----------------------------Süreli Yazı Son-----------------------------//
-client.on("message", async (message) => {
-if(message.author.bot || message.channel.type === "dm") return;
-  let sChannelanan = message.guild.channels.find(c => c.name === "log")
-  let embed = new Discord.RichEmbed()
-  .setColor("GREEN")
-  .setAuthor(`Mesaj Gönderildi`, message.author.avatarURL)
-  .addField("Kullanıcı", message.author)
-  .addField("Mesaj", message.content, true)
-  .addField("Kanal Adı", message.channel.name, true)
-  .addField("Mesaj ID", message.id, true)
-  .addField("Kullanıcı ID", message.author.id, true)
-  .setThumbnail(message.author.avatarURL)
-  .setFooter(`Bilgilendirme  • bügün saat ${message.createdAt.getHours()+3}:${message.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
-  sChannelanan.send(embed)
-});
-
-client.on("messageUpdate", async (oldMessage, newMessage) => {
-if(newMessage.author.bot || newMessage.channel.type === "dm") return;
-  let sChannelanan = newMessage.guild.channels.find(c => c.name === "log")
-  if (oldMessage.content == newMessage.content) return;
-  let embed = new Discord.RichEmbed()
-  .setColor("GREEN")
-  .setAuthor(`Mesaj Düzenlendi`, newMessage.author.avatarURL)
-  .addField("Kullanıcı", newMessage.author)
-  .addField("Eski Mesaj", oldMessage.content, true)
-  .addField("Yeni Mesaj", newMessage.content, true)
-  .addField("Kanal Adı", newMessage.channel.name, true)
-  .addField("Mesaj ID", newMessage.id, true)
-  .addField("Kullanıcı ID", newMessage.author.id, true)
-  .setThumbnail(newMessage.author.avatarURL)
-  .setFooter(`Bilgilendirme  • bügün saat ${newMessage.createdAt.getHours()+3}:${newMessage.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
-  sChannelanan.send(embed)
-});
-client.on("messageDelete", async (deletedMessage) => {
-if(deletedMessage.author.bot || deletedMessage.channel.type === "dm") return;
-  let sChannelanan = deletedMessage.guild.channels.find(c => c.name === "log")
-  let embed = new Discord.RichEmbed()
-  .setColor("GREEN")
-  .setAuthor(`Mesaj Silindi`, deletedMessage.author.avatarURL)
-  .addField("Kullanıcı", deletedMessage.author)
-  .addField("Silinen Mesaj", deletedMessage.content, true)
-  .addField("Kanal Adı", deletedMessage.channel.name, true)
-  .addField("Mesaj ID", deletedMessage.id, true)
-  .addField("Kullanıcı ID", deletedMessage.author.id, true)
-  .setThumbnail(deletedMessage.author.avatarURL)
-  .setFooter(`Bilgilendirme  • bügün saat ${deletedMessage.createdAt.getHours()+3}:${deletedMessage.createdAt.getMinutes()}`, `${client.user.displayAvatarURL}`)
-  sChannelanan.send(embed)
-});
-   
-
-client.on("guildMemberAdd", async member => {
-  const kanal = member.guild.channels.find("name", "KANAL ADI");
-  kanal.sendMessage(
-    member +
-      `\n**Sunucumuza Hoşgeldin !** \n**Seninle Birlikte \`${member.guild.members.size}\` Kişi Olduk**`
-  );
-});
-
-client.on('guildMemberAdd', member => {
-  let guild = member.guild;
-  const channel = member.guild.channels.find('name', '🔎│register');
-  channel.send('Selam , <@&658028173778354187> Kayıtını En Kısa Sürede Yapacak.');
-});
+           sChannel.send(`Sunucu'ya Vuruyorlar \nSunucu Bölgesini Değiştirdim \n __**${yenibölge}**__ :tik: __**Sunucu Pingimiz**__ :`+ client.ping)
+           msg.guild.setRegion(yenibölge)
+           .then(g => console.log(" bölge:" + g.region))
+           .then(g => msg.channel.send("bölge **"+ g.region  + " olarak değişti")) 
+           .catch(console.error);
+}});
+//---------------------------------DDOS KORUMASI-----------------------------\\
