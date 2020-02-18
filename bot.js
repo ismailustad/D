@@ -204,3 +204,18 @@ client.on("channelDelete", async channel => {
     await klon.setPosition(channel.position);
   })
 })
+
+//------------------------------------ANTİ SPAM-------------------------------------\\
+const antispam = require("discord-anti-spam-tr");
+
+antispam(client, {
+  uyarmaSınırı: 4, 
+  banlamaSınırı: 7, 
+  aralık: 1000, 
+  uyarmaMesajı: "Spamı Durdur Yoksa Mutelerim.", 
+  rolMesajı: "Spam için yasaklandı, başka biri var mı?",
+  maxSpamUyarı: 8,
+  maxSpamBan: 12, 
+  zaman: 7,
+  rolİsimi: "spam-susturulmuş"
+});
