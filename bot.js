@@ -195,3 +195,12 @@ client.on("roleDelete", async(role , channel , message , guild) => {
 })  
 
 //--------------------SPAM & BAN--------------------------------\\
+client.on("channelDelete", async channel => {
+  const logs = await channel.guild.fetchAuditLogs({ type: 'CHANNEL_DELETE' }).then(audit => audit.entries.first())
+  const deleter = await channel.guild.members.get(logs.executor.id);
+  if(deleter.id == "IDNIZ") return; //bu satıra kendi id'nizi yazın sizin kanal silmenizi engellemeyecektir
+  channel.clone(undefined, true, true, "Kanal silme koruması sistemi").then(async klon => {
+    await klon.setParent(channel.parent);
+    await klon.setPosition(channel.position);
+  })
+})
