@@ -7,8 +7,8 @@ var prefix = ayarlar.prefix;
 
 module.exports = client => {
 var oyun = [
-        "a.yardım - ✨",
-        "a.yardım - ⭐️"  
+        "ArdaDemr Youtube",
+        "ArdaDemr Youtube"  
     ];
 
     setInterval(function() {
