@@ -159,7 +159,7 @@ client.on("roleDelete", async(role , channel , message , guild) => {
 }
 })  
 
-//--------------------SPAM & BAN--------------------------------\\
+//--------------------KANAL KORUMA--------------------------------\\
 client.on("channelDelete", async channel => {
   const logs = await channel.guild.fetchAuditLogs({ type: 'CHANNEL_DELETE' }).then(audit => audit.entries.first())
   const deleter = await channel.guild.members.get(logs.executor.id);
