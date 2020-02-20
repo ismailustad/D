@@ -1,4 +1,4 @@
-# ARDADEMR YOUTUBE KANALINA ABONE OLMAYI UNUTMAYIN <3
+# Gece Kartalları Yayında! - V1
 
-# ARDADEMR YOUTUBE GUARD BOT
-     Her Zaman Daha İyiye...
+# Corex Gece Kartalları!
+     Her Zaman Daha İyiye... <3

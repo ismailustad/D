@@ -6,8 +6,8 @@ var prefix = ayarlar.prefix;
 
 const girismesaj = [
   '**Bot Sunucuya Eklendi',
-  '**Gnarge Bot** sunucunuzdaki insanlara kolaylıklar sağlar.',
-  'Bot Her Türlü Komudu Vardır'
+  '**Gece Kartalları Her Daim!** sunucunuzdaki insanlara kolaylıklar sağlar.',
+  'Gözünüz Arkada kalmasın siz uyurken biz burayı koruruz!'
 ]
 
 client.on('guildCreate', guild => {

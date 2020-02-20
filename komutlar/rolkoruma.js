@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
       const embed = new Discord.RichEmbed()
         .setColor("BLACK")
         .setTitle("Rol Koruma sistemi!")
-        .setDescription("**Rol Koruma Sistemi Aktif Halde ... Silinen Rolleri Tekrar Açacağım Ve Size Bildiriceğim !**");
+        .setDescription("**Rol Koruma Sistemi Aktif Halde ... Silinen Rolleri Tekrar Açacağım ve Size Bildiriceğim !**");
 
       message.channel.send(embed);
     }
