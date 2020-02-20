@@ -6,12 +6,12 @@ var prefix = ayarlar.prefix;
 
 const girismesaj = [
   '**Bot Sunucuya Eklendi',
-  '**Gece Kartalları Her Daim!** sunucunuzdaki insanlara kolaylıklar sağlar.',
-  'Gözünüz Arkada kalmasın siz uyurken biz burayı koruruz!'
+  '**Gece Kartalları** sunucunuzdaki insanlara kolaylıklar sağlar.',
+  'Sessizce Nöbetteyiz!'
 ]
 
 client.on('guildCreate', guild => {
     const generalChannel = guild.defaultChannel
     generalChannel.sendMessage(girismesaj)
-	client.user.setGame(prefix + 'yardım | ' + client.guilds.size + ' sunucu | ' + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ' kullanıcı');
+	client.user.setGame(prefix + '+yardım | ' + client.guilds.size + ' +sunucu | ' + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ' +kullanıcı');
 })
