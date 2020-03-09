@@ -10,7 +10,7 @@ const moment = require("moment");
 const app = express();
 require("moment-duration-format");
 app.get("/", (request, response) => {
-console.log("Gece Kartalları Nöbette! | Corex");
+console.log("Nöbetteyiz");
 response.sendStatus(200);
 });
 app.listen(8000);
