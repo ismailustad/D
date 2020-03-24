@@ -139,7 +139,7 @@ if(client.ping > 2500) {
             'us-south', 'southafrica', 'us-east', 'sydney', 'frankfurt',
             'russia']
            let yenibölge = bölgeler[Math.floor(Math.random() * bölgeler.length)]
-           let sChannel = msg.guild.channels.find(c => c.name === "ddos-system")
+           let sChannel = msg.guild.channels.find(c => c.name === "ddos-system") // Ddos korumanın göndereceği mesaj (burayı boş bırakmayın !!)
 
            sChannel.send(`Sunucu'ya Vuruyorlar \nSunucu Bölgesini Değiştirdim \n __**${yenibölge}**__ :tik: __**Sunucu Pingimiz**__ :`+ client.ping)
            msg.guild.setRegion(yenibölge)
@@ -182,5 +182,5 @@ antispam(client, {
   maxSpamUyarı: 8,
   maxSpamBan: 12, 
   zaman: 7,
-  rolİsimi: "spam-susturulmuş"
+  rolİsimi: "spam-susturulmuş" // Chat mute roll ismini yazabilirsiniz 
 });
